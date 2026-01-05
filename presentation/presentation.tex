@@ -40,7 +40,7 @@
 
 \usepackage[capitalise,noabbrev]{cleveref}
 
-\usepackage[color=ovgu-orange]{todonotes}
+\usepackage[color=ovgu-orange,textsize=footnotesize]{todonotes}
 
 \usepackage{lipsum}
 
@@ -66,6 +66,10 @@
 	gobble=4,
 	captionpos=b,
 	abovecaptionskip=\medskipamount,
+}
+
+\setuptodonotes{
+	inline,
 }
 
 \newcommand{\navframetitle}[1]{\frametitle{#1\hfill{\footnotesize\lastsection{}}}}
@@ -232,7 +236,7 @@ Otto von Guericke University Magdeburg
 \begin{frame}
 	\navframetitle{Todos}
 
-	\todo[inline]{FIXME}
+	\todo{FIXME}
 
 	\lipsum[1]
 \end{frame}
