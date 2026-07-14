@@ -24,3 +24,14 @@ bump-version NEW_VERSION:
     sed -i "$(printf 's/version = "%s"/version = "%s"/g' "{{VERSION}}" "{{NEW_VERSION}}")" typst.toml
     sed -i "$(printf 's/parcio-thesis:%s/parcio-thesis:%s/g' "{{VERSION}}" "{{NEW_VERSION}}")" README.md
     find . -iname '*.typ' -exec sed -i "$(printf 's/parcio-thesis:%s/parcio-thesis:%s/g' "{{VERSION}}" "{{NEW_VERSION}}")" "{}" \;
+
+package: make-thumbnails
+    mkdir PACKAGE
+    git ls-files | grep -v 'justfile' | while read -r f ; do \
+        cp --parents "$f" PACKAGE/ ; \
+    done
+    cd PACKAGE && \
+    find . -iname '*.typ' -exec sed -i 's/@local/@preview/g' "{}" \; && \
+    sed -i "$(printf 's+./justfile+https://github.com/parcio/templates/blob/%s/thesis-typst/justfile+g' "$(git rev-parse HEAD)")" README.md && \
+    tar -czf ../PACKAGE.tar.gz .
+    rm -rf PACKAGE
