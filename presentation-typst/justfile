@@ -33,5 +33,6 @@ package: make-thumbnails
     cd PACKAGE && \
     find . -iname '*.typ' -exec sed -i 's/@local/@preview/g' "{}" \; && \
     sed -i "$(printf 's+./justfile+https://github.com/parcio/templates/blob/%s/presentation-typst/justfile+g' "$(git rev-parse HEAD)")" README.md && \
+    typst-package-check check && \
     tar -czf ../PACKAGE.tar.gz .
     rm -rf PACKAGE
