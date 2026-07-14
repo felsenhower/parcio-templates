@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/parcio/templates/workflows/CI/badge.svg)](https://github.com/parcio/templates/actions)
 
-This repository contains LaTeX & Typst templates for presentations, reports, theses and more.
+This repository contains LaTeX and Typst templates for presentations, reports, theses and more.
 
 > [!NOTE]
 > The Typst templates can also be found in the Typst Universe ([parcio-slides](https://typst.app/universe/package/parcio-slides), [parcio-thesis](https://typst.app/universe/package/parcio-thesis)) and thus imported directly from there via the `@preview` namespace.
