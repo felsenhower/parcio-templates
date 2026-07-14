@@ -136,7 +136,7 @@ date-format = "[day]. [month repr:long] [year]"
 months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
 ```
 
-## Fonts and OvGU Corporate Design
+## Fonts and OVGU Corporate Design
 
 This template requires these three fonts to be installed on your system[^1]:
 

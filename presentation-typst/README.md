@@ -36,7 +36,7 @@ To use this template, simply import it as shown below and define a `title-slide`
 ```
 
 These are the default options. We recommend leaving the show-rule as-is, such that you can just do `#show parcio-theme`, and
-using the provided OvGU logo for your title slide (if you initialized with `typst init`) by specifying `logo: image("OVGU-INF.pdf", width: 9.8cm)`
+using the provided OVGU logo for your title slide (if you initialized with `typst init`) by specifying `logo: image("OVGU-INF.pdf", width: 9.8cm)`
 on your title slide.
 
 Multiple authors can be displayed by providing an array of dictionaries instead, like so: 
@@ -86,7 +86,7 @@ Additionally, this template uses a different page counter than that of `polylux`
 In order to make the template available locally under the `@local` namespace, clone this repository and refer to [Local Packages](https://github.com/typst/packages/#local-packages) or use the [Unofficial Typst Package Manager](https://github.com/typst-community/utpm).
 You can also use the provided [`justfile`](./justfile) to move this template to the correct location as well as generate up-to-date thumbnails for publishing.
 
-## Fonts and OvGU Corporate Design
+## Fonts and OVGU Corporate Design
 
 This template requires these two fonts to be installed on your system:
 
