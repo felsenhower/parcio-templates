@@ -1,6 +1,50 @@
 name: CI
 on: [push, pull_request]
 jobs:
+  typst:
+    name: Typst
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          show-progress: false
+      - name: Install font dependencies
+        run: |
+          sudo apt update || true
+          sudo apt --yes --no-install-recommends install fonts-inconsolata
+          wget https://github.com/alerque/libertinus/releases/download/v7.051/Libertinus-7.051.zip
+          unzip -d fonts/ Libertinus-7.051.zip
+      - name: Install Typst via Release Download
+        run: |
+          wget https://github.com/typst/typst/releases/download/v0.15.0/typst-x86_64-unknown-linux-musl.tar.xz
+          mkdir ~/typst && tar -xf typst-x86_64-unknown-linux-musl.tar.xz -C ~/typst
+          echo "$HOME/typst/typst-x86_64-unknown-linux-musl" >> $GITHUB_PATH
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Copy templates into local namespace
+        run: |
+          THESIS_VERSION="$(grep version thesis-typst/typst.toml | grep -E '[0-9]+.[0-9]+.[0-9]+' -o)"
+          SLIDES_VERSION="$(grep version presentation-typst/typst.toml | grep -E '[0-9]+.[0-9]+.[0-9]+' -o)"
+          mkdir -p ~/.local/share/typst/packages/local/parcio-thesis/$THESIS_VERSION && cp -r thesis-typst/* $_
+          mkdir -p ~/.local/share/typst/packages/local/parcio-slides/$SLIDES_VERSION && cp -r presentation-typst/* $_
+      - name: Build thesis
+        run: typst compile thesis-typst/template/thesis.typ thesis-typst/thesis.pdf --font-path ./fonts
+      - name: Build presentation
+        run: typst compile presentation-typst/template/slides.typ presentation-typst/slides.pdf --font-path ./fonts        
+      - name: Prepare directory
+        run: |
+          mkdir -p public/typst
+          cp thesis-typst/thesis.pdf public/typst
+          cp presentation-typst/slides.pdf public/typst
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: typst-artifact
+          path: public
+          retention-days: 1
+          
   latex:
     name: LaTeX
     runs-on: ubuntu-24.04
@@ -24,34 +68,52 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build presentation
         run: |
-          cd presentation
+          cd presentation-latex
           latexmk -pdf presentation.tex
       - name: Build report
         run: |
-          cd report
+          cd report-latex
           latexmk -pdf report.tex
       - name: Build thesis
         run: |
-          cd thesis
+          cd thesis-latex
           latexmk -pdf thesis.tex
       - name: Create thumbnails
         run: |
-          convert -colorspace sRGB -density 300 -thumbnail 1920x1920 -quality 90 -background white -alpha remove -alpha off 'presentation/presentation.pdf[0]' presentation/presentation.png
-          convert -colorspace sRGB -density 300 -thumbnail 1920x1920 -quality 90 -background white -alpha remove -alpha off 'report/report.pdf[0]' report/report.png
-          convert -colorspace sRGB -density 300 -thumbnail 1920x1920 -quality 90 -background white -alpha remove -alpha off 'thesis/thesis.pdf[0]' thesis/thesis.png
+          convert -colorspace sRGB -density 300 -thumbnail 1920x1920 -quality 90 -background white -alpha remove -alpha off 'presentation-latex/presentation.pdf[0]' presentation-latex/presentation.png
+          convert -colorspace sRGB -density 300 -thumbnail 1920x1920 -quality 90 -background white -alpha remove -alpha off 'report-latex/report.pdf[0]' report-latex/report.png
+          convert -colorspace sRGB -density 300 -thumbnail 1920x1920 -quality 90 -background white -alpha remove -alpha off 'thesis-latex/thesis.pdf[0]' thesis-latex/thesis.png
       - name: Prepare directory
         run: |
-          mkdir public
-          cp presentation/presentation.pdf presentation/presentation.png public/
-          cp report/report.pdf report/report.png public/
-          cp thesis/thesis.pdf thesis/thesis.png public/
+          mkdir -p public/latex
+          cp presentation-latex/presentation.pdf presentation-latex/presentation.png public/latex
+          cp report-latex/report.pdf report-latex/report.png public/latex
+          cp thesis-latex/thesis.pdf thesis-latex/thesis.png public/latex
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v7
+        with:
+          name: latex-artifact
+          path: public
+          retention-days: 1
+
+  combine:
+    name: Combine Artifacts
+    needs: [typst, latex]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v8
         with:
           path: public
+          merge-multiple: true
+      - name: Upload combined artifacts
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+          
   deploy:
     name: Deploy
-    needs: latex
+    needs: combine
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     if: ${{ github.ref == 'refs/heads/master' }}
