@@ -85,7 +85,7 @@ These could be useful while writing your thesis!
 
 ```typ
 // A TODO marker. (inline: false -> margin note, inline: true -> box).
-#let todo(inline: false, body) = {}
+#let todo(inline: false, body) = { /* ... */ }
 
 // Like \section* in LaTeX. (unnumbered level 2 heading, not in ToC).
 #let section = heading.with(level: 2, outlined: false, numbering: none)
