@@ -67,7 +67,7 @@ See here for **all** possible arguments (and their default values) as well as ut
   lang: "en",
   /// The logo(s) of your faculty or institution.
   /// -> content
-  header-logo: image("logos/OVGU-INF.pdf", width: 66%),
+  header-logo: image(ovgu-fin-logo, width: 66%),
   /// Custom translations for certain keywords in TOML format.
   /// -> dictionary
   translations: toml("translations.toml")
