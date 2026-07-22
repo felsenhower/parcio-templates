@@ -43,7 +43,7 @@ jobs:
       - name: Create presentation thumbnails
         run: |
           mkdir presentation-typst/thumbnails
-          typst compile presentation-typst/template/thesis.typ -f png --pages 1,2,3,4 --ppi 300 presentation-typst/thumbnails/p-{0p}.png --font-path ./fonts
+          typst compile presentation-typst/template/slides.typ -f png --pages 1,2,3,4 --ppi 300 presentation-typst/thumbnails/p-{0p}.png --font-path ./fonts
           zopflipng -m presentation-typst/thumbnails/*.png
       - name: Prepare directory
         run: |
