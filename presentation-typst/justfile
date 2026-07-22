@@ -41,7 +41,8 @@ package TYPST_PACKAGES_REPO_ROOT: make-thumbnails
     [ -d "{{TYPST_PACKAGES_REPO_ROOT}}" ]
     [ -d "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides" ]
     @echo Packaging to "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides/{{VERSION}}"
-    mkdir -p "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides/{{VERSION}}"
+    [ -d "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides/{{VERSION}}" ] && rm -r "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides/{{VERSION}}"
+    mkdir "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides/{{VERSION}}"
     git ls-files | grep -v 'justfile' | while read -r f ; do \
         cp --parents "$f" "{{TYPST_PACKAGES_REPO_ROOT}}/packages/preview/parcio-slides/{{VERSION}}"/ ; \
     done
