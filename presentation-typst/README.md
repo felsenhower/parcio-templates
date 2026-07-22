@@ -2,7 +2,7 @@
 
 <p align="center">
     <img src="thumbnails/p-01.png" width=40% alt="An exemplary title slide with a blue university logo.">
-    <img src="thumbnails/p-02.png" width=40% alt="a slide preview image"><br/>
+    <img src="thumbnails/p-02.png" width=40% alt="An outline slide listing: Introduction, Background, Evaluation, Conclusion."><br/>
     <img src="thumbnails/p-03.png" width=40% alt="a slide preview image">
     <img src="thumbnails/p-04.png" width=40% alt="a slide preview image">
 </p>
