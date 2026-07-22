@@ -1,10 +1,10 @@
 # The `parcio-slides` Polylux Template
 
 <p align="center">
-    <img src="thumbnails/p-01.png" width=40% alt="An exemplary title slide with a blue university logo.">
-    <img src="thumbnails/p-02.png" width=40% alt="An outline slide listing: Introduction, Background, Evaluation, Conclusion."><br/>
-    <img src="thumbnails/p-03.png" width=40% alt="An example slide with some text on it.">
-    <img src="thumbnails/p-04.png" width=40% alt="An example slide showcasing subfigures.">
+    <img src="https://parcio.github.io/templates/typst/slides-thumbnails/p-01.png" width=40% alt="An exemplary title slide with a blue university logo.">
+    <img src="https://parcio.github.io/templates/typst/slides-thumbnails/p-02.png" width=40% alt="An outline slide listing: Introduction, Background, Evaluation, Conclusion."><br/>
+    <img src="https://parcio.github.io/templates/typst/slides-thumbnails/p-03.png" width=40% alt="An example slide with some text on it.">
+    <img src="https://parcio.github.io/templates/typst/slides-thumbnails/p-04.png" width=40% alt="An example slide showcasing subfigures.">
 </p>
 
 <p align="center">

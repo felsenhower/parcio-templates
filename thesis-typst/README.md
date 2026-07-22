@@ -1,9 +1,9 @@
 # The `parcio-thesis` Template
 
 <p align="center">
-    <img src="thumbnails/p-01.png" width=32% alt="An exemplary thesis title page with default metadata.">&nbsp;
-    <img src="thumbnails/p-05.png" width=32% alt="A page showing a simple table of contents for a thesis.">&nbsp;
-    <img src="thumbnails/p-07.png" width=32% alt="A chapter page with chapter headings and section headings, as well as paragraphs containing blind text and subfigures.">
+    <img src="https://parcio.github.io/templates/typst/thesis-thumbnails/p-01.png" width=32% alt="An exemplary thesis title page with default metadata.">&nbsp;
+    <img src="https://parcio.github.io/templates/typst/thesis-thumbnails/p-05.png" width=32% alt="A page showing a simple table of contents for a thesis.">&nbsp;
+    <img src="https://parcio.github.io/templates/typst/thesis-thumbnails/p-07.png" width=32% alt="A chapter page with chapter headings and section headings, as well as paragraphs containing blind text and subfigures.">
 </p>
 
 <p align="center">A simple thesis template for the ParCIO working group at Otto-von-Guericke University Magdeburg.</p>
