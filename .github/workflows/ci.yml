@@ -14,10 +14,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update || true
-          sudo apt --yes --no-install-recommends install fonts-inconsolata
+          sudo apt --yes --no-install-recommends install fonts-inconsolata zopfli
           wget https://github.com/alerque/libertinus/releases/download/v7.051/Libertinus-7.051.zip
           unzip -d fonts/ Libertinus-7.051.zip
-          sudo apt --yes --no-install-recommends install zopfli
       - name: Install Typst via Release Download
         run: |
           wget https://github.com/typst/typst/releases/download/v0.15.0/typst-x86_64-unknown-linux-musl.tar.xz
