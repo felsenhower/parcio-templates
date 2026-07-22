@@ -1,7 +1,7 @@
 # The `parcio-thesis` Template
 
 <p align="center">
-    <img src="thumbnails/p-01.png" width=32% alt="a thesis preview image">&nbsp;
+    <img src="thumbnails/p-01.png" width=32% alt="An exemplary thesis title page with default metadata.">&nbsp;
     <img src="thumbnails/p-05.png" width=32% alt="a thesis preview image">&nbsp;
     <img src="thumbnails/p-07.png" width=32% alt="a thesis preview image">
 </p>
