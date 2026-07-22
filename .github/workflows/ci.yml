@@ -49,9 +49,9 @@ jobs:
         run: |
           mkdir -p public/typst
           cp thesis-typst/thesis.pdf public/typst/
-          cp -r thesis-typst/thumbnails public/typst/
+          cp -r thesis-typst/thumbnails public/typst/thesis-thumbnails
           cp presentation-typst/slides.pdf public/typst/
-          cp -r presentation-typst/thumbnails public/typst/
+          cp -r presentation-typst/thumbnails public/typst/slides-thumbnails
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
